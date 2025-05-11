@@ -22,8 +22,6 @@ admin.site.register(EgitimMerkezi, EgitimMerkeziAdmin)
 admin.site.register(TesisImkani, TesisImkaniAdmin)
 admin.site.register(Sinif, SinifAdmin)
 
-# egitim_takip/admin.py
-from django.contrib import admin
-from .models import SiteSettings
+from .models import SiteAyar
+admin.site.register(SiteAyar)
 
-admin.site.register(SiteSettings)

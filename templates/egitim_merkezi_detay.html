@@ -1,6 +1,9 @@
+
 {% extends "base.html" %}
 {% block title %}{{ merkez.ad }}{% endblock %}
 {% block content %}
+<p style="font-size: small; color: gray;">{{ meta_aciklama }}</p>
+
 <h2>{{ merkez.ad }}</h2>
 <p><strong>Müdür:</strong> {{ merkez.mudur }}</p>
 <p><strong>Telefon:</strong> {{ merkez.telefon }}</p>

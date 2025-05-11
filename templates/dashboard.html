@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 {% block title %}Yönetim Paneli{% endblock %}
 {% block content %}
@@ -7,5 +8,7 @@
   <li>Toplam Sınıf Kontenjanı: {{ toplam_kontenjan }}</li>
   <li>Toplam Yemekhane Öğünü: {{ toplam_yemek }}</li>
 </ul>
+
+<p><strong>İletişim:</strong> {{ iletisim_email }} / {{ iletisim_telefon }}</p>
 <a href="{% url 'ana_sayfa' %}">← Ana Sayfaya Dön</a>
 {% endblock %}

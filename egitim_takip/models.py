@@ -54,23 +54,21 @@ class Sinif(models.Model):
         return f"{self.ad} ({self.kontenjan} kişi)"
 
 
-# egitim_takip/models.py
-class SiteSettings(models.Model):
-    site_name = models.CharField(max_length=100)
-    meta_description = models.TextField()
-    footer_text = models.TextField()
-    # Diğer alanlar...
-    
+   
 class SiteAyar(models.Model):
-    site_adi = models.CharField(max_length=200, default="Eğitim Takip Sistemi")
-    meta_baslik = models.CharField(max_length=200, blank=True)
-    meta_aciklama = models.TextField(blank=True)
-    meta_etiketler = models.CharField(max_length=300, blank=True)
-    header_logo = models.ImageField(upload_to="logo/", blank=True, null=True)
-    footer_yazi = models.CharField(max_length=255, blank=True)
-    iletisim_email = models.EmailField(blank=True)
-    iletisim_telefon = models.CharField(max_length=20, blank=True)
-    tema = models.CharField(max_length=10, choices=[("acik", "Açık"), ("koyu", "Koyu")], default="koyu")
+    site_adi = models.CharField("Site adı", max_length=200, default="Eğitim Takip Sistemi")
+    meta_baslik = models.CharField("Meta başlık", max_length=200, blank=True)
+    meta_aciklama = models.TextField("Meta açıklama", blank=True)
+    meta_etiketler = models.CharField("Meta etiketler", max_length=300, blank=True)
+    header_logo = models.ImageField("Header logosu", upload_to="logo/", blank=True, null=True)
+    footer_yazi = models.CharField("Alt bilgi yazısı", max_length=255, blank=True)
+    iletisim_email = models.EmailField("İletişim e-posta", blank=True)
+    iletisim_telefon = models.CharField("İletişim telefonu", max_length=20, blank=True)
+    tema = models.CharField("Tema", max_length=10, choices=[("acik", "Açık"), ("koyu", "Koyu")], default="koyu")
+
+    class Meta:
+        verbose_name = "Site Ayarı"
+        verbose_name_plural = "Site Ayarları"
 
     def __str__(self):
         return self.site_adi
