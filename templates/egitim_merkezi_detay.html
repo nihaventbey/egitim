@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ merkez.ad }}</title>
+</head>
+<body>
+    <h1>{{ merkez.ad }}</h1>
+    <p><strong>Müdür:</strong> {{ merkez.mudur }}</p>
+    <p><strong>Telefon:</strong> {{ merkez.telefon }}</p>
+    <p><strong>Adres:</strong> {{ merkez.adres }}</p>
+
+    {% if tesis %}
+    <h2>Tesis Bilgileri</h2>
+    <p>Yataklı kontenjan: {{ tesis.yatakli_kontenjan }}</p>
+    <p>Yataksız kontenjan: {{ tesis.yataksiz_kontenjan }}</p>
+
+    <h3>Yemekhane</h3>
+    <ul>
+        {% for yemek in yemekler %}
+        <li>{{ yemek.ogun_adi }} - {{ yemek.fiyat }} ₺</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h2>Sınıflar</h2>
+    <ul>
+        {% for sinif in siniflar %}
+        <li>{{ sinif.ad }} ({{ sinif.kontenjan }} kişi)</li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'ana_sayfa' %}">← Geri dön</a></p>
+</body>
+</html>

@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Eğitim Merkezleri</title>
+</head>
+<body>
+    <h1>Eğitim Merkezleri</h1>
+    <ul>
+    {% for merkez in merkezler %}
+        <li><a href="{% url 'egitim_merkezi_detay' merkez.id %}">{{ merkez.ad }}</a></li>
+    {% empty %}
+        <li>Hiç merkez yok.</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
