@@ -21,3 +21,9 @@ class EgitimMerkeziAdmin(admin.ModelAdmin):
 admin.site.register(EgitimMerkezi, EgitimMerkeziAdmin)
 admin.site.register(TesisImkani, TesisImkaniAdmin)
 admin.site.register(Sinif, SinifAdmin)
+
+# egitim_takip/admin.py
+from django.contrib import admin
+from .models import SiteSettings
+
+admin.site.register(SiteSettings)

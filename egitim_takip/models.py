@@ -1,6 +1,19 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+# egitim_takip/models.py
+from django.db import models
+from django.conf import settings
+
+
+class ThemeConfiguration(models.Model):
+    THEME_CHOICES = [
+        ('light', 'Açık'),
+        ('dark', 'Koyu'),
+    ]
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    theme = models.CharField(max_length=5, choices=THEME_CHOICES, default='light')
+
 
 class EgitimMerkezi(models.Model):
     ad = models.CharField(max_length=200)
@@ -39,3 +52,25 @@ class Sinif(models.Model):
 
     def __str__(self):
         return f"{self.ad} ({self.kontenjan} kişi)"
+
+
+# egitim_takip/models.py
+class SiteSettings(models.Model):
+    site_name = models.CharField(max_length=100)
+    meta_description = models.TextField()
+    footer_text = models.TextField()
+    # Diğer alanlar...
+    
+class SiteAyar(models.Model):
+    site_adi = models.CharField(max_length=200, default="Eğitim Takip Sistemi")
+    meta_baslik = models.CharField(max_length=200, blank=True)
+    meta_aciklama = models.TextField(blank=True)
+    meta_etiketler = models.CharField(max_length=300, blank=True)
+    header_logo = models.ImageField(upload_to="logo/", blank=True, null=True)
+    footer_yazi = models.CharField(max_length=255, blank=True)
+    iletisim_email = models.EmailField(blank=True)
+    iletisim_telefon = models.CharField(max_length=20, blank=True)
+    tema = models.CharField(max_length=10, choices=[("acik", "Açık"), ("koyu", "Koyu")], default="koyu")
+
+    def __str__(self):
+        return self.site_adi

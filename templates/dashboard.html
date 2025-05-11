@@ -1,17 +1,11 @@
-
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
-</head>
-<body>
-    <h1>Yönetim Paneli</h1>
-    <ul>
-        <li>Toplam Eğitim Merkezi: {{ merkez_sayisi }}</li>
-        <li>Toplam Sınıf Kontenjanı: {{ toplam_kontenjan }}</li>
-        <li>Toplam Yemekhane Öğünü: {{ toplam_yemek }}</li>
-    </ul>
-    <p><a href="{% url 'ana_sayfa' %}">← Ana Sayfaya Dön</a></p>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Yönetim Paneli{% endblock %}
+{% block content %}
+<h2>Yönetim Paneli</h2>
+<ul>
+  <li>Toplam Eğitim Merkezi: {{ merkez_sayisi }}</li>
+  <li>Toplam Sınıf Kontenjanı: {{ toplam_kontenjan }}</li>
+  <li>Toplam Yemekhane Öğünü: {{ toplam_yemek }}</li>
+</ul>
+<a href="{% url 'ana_sayfa' %}">← Ana Sayfaya Dön</a>
+{% endblock %}

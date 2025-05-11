@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr" data-theme="{{ tema|default:'koyu' }}">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}{{ site_adi|default:"Eğitim Takip Sistemi" }}{% endblock %}</title>
+  <meta name="description" content="{{ meta_aciklama|default:'' }}">
+  <meta name="keywords" content="{{ meta_etiketler|default:'' }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <script>
+    const tema = localStorage.getItem('tema') || document.documentElement.dataset.theme;
+    document.documentElement.setAttribute('data-theme', tema);
+  </script>
+</head>
+<body>
+  <header>
+    {% if header_logo %}
+      <img src="{{ header_logo.url }}" alt="Logo" height="50">
+    {% endif %}
+    <h1>{{ site_adi|default:"Eğitim Takip Sistemi" }}</h1>
+    <button onclick="degistirTema()">🌙 Tema Değiştir</button>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>{{ footer_yazi|default:"© 2025 Eğitim Takip Sistemi" }}</p>
+  </footer>
+
+  <script>
+    function degistirTema() {
+      const simdiki = document.documentElement.getAttribute('data-theme');
+      const yeni = simdiki === 'koyu' ? 'acik' : 'koyu';
+      document.documentElement.setAttribute('data-theme', yeni);
+      localStorage.setItem('tema', yeni);
+    }
+  </script>
+</body>
+</html>
