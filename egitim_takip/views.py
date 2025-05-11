@@ -22,12 +22,16 @@ def egitim_merkezi_detay(request, pk):
         "siniflar": siniflar
     })
 
+from django.shortcuts import render
+from .models import EgitimMerkezi, Sinif, Yemekhane
+from django.db.models import Sum
+
 def dashboard(request):
     merkez_sayisi = EgitimMerkezi.objects.count()
-    toplam_kontenjan = Sinif.objects.all().aggregate(models.Sum("kontenjan"))["kontenjan__sum"] or 0
+    toplam_kontenjan = Sinif.objects.aggregate(Sum('kontenjan'))['kontenjan__sum'] or 0
     toplam_yemek = Yemekhane.objects.count()
-    return render(request, "dashboard.html", {
-        "merkez_sayisi": merkez_sayisi,
-        "toplam_kontenjan": toplam_kontenjan,
-        "toplam_yemek": toplam_yemek,
+    return render(request, 'dashboard.html', {
+        'merkez_sayisi': merkez_sayisi,
+        'toplam_kontenjan': toplam_kontenjan,
+        'toplam_yemek': toplam_yemek
     })
