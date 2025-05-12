@@ -2,13 +2,16 @@
 {% extends "base.html" %}
 {% block title %}Yönetim Paneli{% endblock %}
 {% block content %}
-<h2>Yönetim Paneli</h2>
-<ul>
-  <li>Toplam Eğitim Merkezi: {{ merkez_sayisi }}</li>
-  <li>Toplam Sınıf Kontenjanı: {{ toplam_kontenjan }}</li>
-  <li>Toplam Yemekhane Öğünü: {{ toplam_yemek }}</li>
-</ul>
-
-<p><strong>İletişim:</strong> {{ iletisim_email }} / {{ iletisim_telefon }}</p>
-<a href="{% url 'ana_sayfa' %}">← Ana Sayfaya Dön</a>
+<div class="section">
+  <h2 class="title">Yönetim Paneli</h2>
+  <div class="card">
+    <ul>
+      <li><strong>Toplam Eğitim Merkezi:</strong> {{ merkez_sayisi }}</li>
+      <li><strong>Toplam Sınıf Kontenjanı:</strong> {{ toplam_kontenjan }}</li>
+      <li><strong>Toplam Yemekhane Öğünü:</strong> {{ toplam_yemek }}</li>
+    </ul>
+    <p><strong>İletişim:</strong> {{ iletisim_email }} / {{ iletisim_telefon }}</p>
+  </div>
+  <a href="{% url 'ana_sayfa' %}">← Ana Sayfaya Dön</a>
+</div>
 {% endblock %}

@@ -25,3 +25,7 @@ admin.site.register(Sinif, SinifAdmin)
 from .models import SiteAyar
 admin.site.register(SiteAyar)
 
+from .models import EgitimTuru, Egitim
+admin.site.register(EgitimTuru)
+admin.site.register(Egitim)
+

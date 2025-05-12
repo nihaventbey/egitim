@@ -2,32 +2,38 @@
 {% extends "base.html" %}
 {% block title %}{{ merkez.ad }}{% endblock %}
 {% block content %}
-<p style="font-size: small; color: gray;">{{ meta_aciklama }}</p>
+<div class="section">
+  <h2 class="title">{{ merkez.ad }}</h2>
+  <div class="card">
+    <p><strong>Müdür:</strong> {{ merkez.mudur }}</p>
+    <p><strong>Telefon:</strong> {{ merkez.telefon }}</p>
+    <p><strong>Adres:</strong> {{ merkez.adres }}</p>
+  </div>
 
-<h2>{{ merkez.ad }}</h2>
-<p><strong>Müdür:</strong> {{ merkez.mudur }}</p>
-<p><strong>Telefon:</strong> {{ merkez.telefon }}</p>
-<p><strong>Adres:</strong> {{ merkez.adres }}</p>
+  {% if tesis %}
+  <div class="card">
+    <h3>Tesis Bilgileri</h3>
+    <p>Yataklı kontenjan: {{ tesis.yatakli_kontenjan }}</p>
+    <p>Yataksız kontenjan: {{ tesis.yataksiz_kontenjan }}</p>
 
-{% if tesis %}
-<h3>Tesis Bilgileri</h3>
-<p>Yataklı kontenjan: {{ tesis.yatakli_kontenjan }}</p>
-<p>Yataksız kontenjan: {{ tesis.yataksiz_kontenjan }}</p>
+    <h4>Yemekhane</h4>
+    <ul>
+      {% for yemek in yemekler %}
+        <li>{{ yemek.ogun_adi }} – {{ yemek.fiyat }} ₺</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
 
-<h4>Yemekhane</h4>
-<ul>
-  {% for yemek in yemekler %}
-    <li>{{ yemek.ogun_adi }} – {{ yemek.fiyat }} ₺</li>
-  {% endfor %}
-</ul>
-{% endif %}
+  <div class="card">
+    <h3>Sınıflar</h3>
+    <ul>
+      {% for sinif in siniflar %}
+        <li>{{ sinif.ad }} ({{ sinif.kontenjan }} kişi)</li>
+      {% endfor %}
+    </ul>
+  </div>
 
-<h3>Sınıflar</h3>
-<ul>
-  {% for sinif in siniflar %}
-    <li>{{ sinif.ad }} ({{ sinif.kontenjan }} kişi)</li>
-  {% endfor %}
-</ul>
-
-<a href="{% url 'ana_sayfa' %}">← Geri dön</a>
+  <a href="{% url 'ana_sayfa' %}">← Geri dön</a>
+</div>
 {% endblock %}

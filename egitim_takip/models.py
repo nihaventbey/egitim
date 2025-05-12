@@ -72,3 +72,23 @@ class SiteAyar(models.Model):
 
     def __str__(self):
         return self.site_adi
+
+from django.db import models
+from .models import EgitimMerkezi
+
+class EgitimTuru(models.Model):
+    ad = models.CharField("Eğitim Türü", max_length=100)
+    saat = models.PositiveIntegerField("Süre (saat)")
+
+    def __str__(self):
+        return f"{self.ad} ({self.saat} saat)"
+
+class Egitim(models.Model):
+    egitim_merkezi = models.ForeignKey(EgitimMerkezi, on_delete=models.CASCADE)
+    tur = models.ForeignKey(EgitimTuru, on_delete=models.CASCADE)
+    ad = models.CharField("Eğitim Adı", max_length=200)
+    baslangic_tarihi = models.DateField("Başlangıç Tarihi", null=True, blank=True)
+    bitis_tarihi = models.DateField("Bitiş Tarihi", null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.ad} - {self.tur.ad}"

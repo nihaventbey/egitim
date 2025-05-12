@@ -4,6 +4,10 @@
   --text-color-light: #222;
   --bg-color-dark: #1e1e2e;
   --text-color-dark: #eee;
+  --primary-accent: #5ca0d3;
+  --card-bg-light: #ffffff;
+  --card-bg-dark: #2a2a3c;
+  --border-radius: 10px;
 }
 
 html[data-theme="acik"] {
@@ -20,10 +24,63 @@ body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 1rem;
+  line-height: 1.6;
 }
 
 header, footer {
   padding: 1rem;
   background: rgba(128, 128, 128, 0.1);
   text-align: center;
+}
+
+img.logo {
+  height: 50px;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+button.theme-toggle {
+  background-color: var(--primary-accent);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.theme-toggle:hover {
+  background-color: #3c8dc7;
+}
+
+.card {
+  background-color: var(--card-bg-light);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin: 1rem 0;
+}
+
+html[data-theme="koyu"] .card {
+  background-color: var(--card-bg-dark);
+}
+
+.section {
+  margin: 2rem auto;
+  max-width: 900px;
+}
+
+.title {
+  text-align: center;
+  color: var(--primary-accent);
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--primary-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
